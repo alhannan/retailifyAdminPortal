@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserHistory } from "history";
 import { Router, Switch, Route } from "react-router-dom";
-import SignInPage from "../components/SignInPage";
+import SignInPage from "../Pages/SignInPage";
 
 const AppRouter = () => (
   <div>
