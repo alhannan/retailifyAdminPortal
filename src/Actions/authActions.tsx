@@ -1,5 +1,5 @@
 import { auth } from "../Firebase/index";
-import { LOGIN } from "./types";
+import { LOGIN, AUTH_ERROR } from "./types";
 
 export const startEmailLogin = (email: string, pass: any) => async (dispatch: any) => {
   try {
@@ -7,6 +7,6 @@ export const startEmailLogin = (email: string, pass: any) => async (dispatch: an
 
     dispatch({ type: LOGIN, payload: { uid: user?.uid, email: user?.email} });
   } catch (error) {
-    console.log(error);
+    dispatch({ type: AUTH_ERROR, payload: { ...error } });
   }
 };

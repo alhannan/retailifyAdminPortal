@@ -1,8 +1,9 @@
-import { LOGIN } from "../Actions/types";
+import { LOGIN, AUTH_ERROR } from "../Actions/types";
 import { Action } from "../Interfaces/actionInterface";
 
 const INITIAL_STATE = {
   admin: {},
+  error: ""
 };
 
 export default (state = INITIAL_STATE, action: Action) => {
@@ -12,6 +13,11 @@ export default (state = INITIAL_STATE, action: Action) => {
         ...state,
         admin: action.payload,
       };
+    case AUTH_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      }
     default:
       return state;
   }
