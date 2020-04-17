@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { startEmailLogin} from '../Actions/authActions';
+import { startEmailLogin} from '../Actions';
 
 const SignInPage = props => {
   const [email, setEmail] = useState("");

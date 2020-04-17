@@ -1,4 +1,4 @@
-import { auth } from "../firebase/index";
+import { auth } from "../Firebase/index";
 import { LOGIN } from "./types";
 
 export const startEmailLogin = (email: string, pass: any) => async (dispatch: any) => {
