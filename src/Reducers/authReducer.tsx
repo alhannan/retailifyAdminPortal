@@ -12,6 +12,7 @@ export default (state = INITIAL_STATE, action: Action) => {
       return {
         ...state,
         admin: action.payload,
+        error: ""
       };
     case AUTH_ERROR:
       return {

@@ -1,15 +1,27 @@
-import { auth } from "../Firebase/index";
+import { auth, functions } from "../Firebase/index";
 import { LOGIN, AUTH_ERROR } from "./types";
 
-
-
-export const startEmailLogin = (email: string, pass: any) => async (dispatch: any) => {
+export const startEmailLogin = (email: string, pass: any) => async (
+  dispatch: any
+) => {
   try {
-    const { user } = await auth.signInWithEmailAndPassword(email, pass);
+    const adminLogin = functions.httpsCallable("adminLogin");
 
-    dispatch({ type: LOGIN, payload: { uid: user?.uid, email: user?.email} });
+    const { data } = await adminLogin({ email });
+
+    if (data) {
+      const { user } = await auth.signInWithEmailAndPassword(email, pass);
+      dispatch({
+        type: LOGIN,
+        payload: { uid: user?.uid, email: user?.email },
+      });
+    } else {
+      dispatch({
+        type: AUTH_ERROR,
+        payload: "Not an Admin Account",
+      });
+    }
   } catch (error) {
-    dispatch({ type: AUTH_ERROR, payload: { ...error } });
+    dispatch({ type: AUTH_ERROR, payload: "Invalid Email or Password"  });
   }
 };
-
