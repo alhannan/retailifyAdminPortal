@@ -10,7 +10,10 @@ const theme = createMuiTheme({
     danger: '#ff5f5f',
   },
   typography: {
-    // fontFamily:
+    fontFamily: 'Segoe UI',
+    button: {
+      textTransform: "none"
+    }
 
   }
 });

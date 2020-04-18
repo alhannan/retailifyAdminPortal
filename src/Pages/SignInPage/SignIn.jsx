@@ -16,10 +16,16 @@ import { startEmailLogin } from "../../Actions";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(5),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    padding: "50px",
+  },
+  main: {
+    backgroundColor: "#fff",
+    boxShadow: '0px 8px 25px 0px #EEE',
+    borderRadius: "10px"
   },
   form: {
     width: "100%",
@@ -29,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   subHeading: {
-    fontSize: "22px",
-    margin: "20px",
+    fontSize: "17px",
+    margin: "12px",
   },
   error: {
     color: 'red',
@@ -57,7 +63,7 @@ const SignIn = (props) => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" className={classes.main} maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <img className="logo" src={logo} alt="retailify_logo" />
@@ -96,11 +102,12 @@ const SignIn = (props) => {
           <Button
             type="submit"
             fullWidth
-            variant="outlined"
+            disableElevation
+            variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Sign in
           </Button>
         </form>
         {error && <Typography className={classes.error} color="textPrimary">{error}</Typography>}
