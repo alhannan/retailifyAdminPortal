@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../Actions/authActions";
+import NavList from './NavList';
 import "./NavBar.scss";
-const NavBar = () => {
-  //set and select page from redux navigation reducer like webapp
-  const [selectedPage, setSelectedPage] = useState("Dashboard");
 
-  // get pages from constants
-  const pages = ["Dashboard", "Retailers", "Customers", "Products", "Orders"];
+const NavBar = () => {
 
   const retailerCount = 3;
   const productCount = 1400;
@@ -19,27 +16,11 @@ const NavBar = () => {
   };
 
   //dispatch page action here
-  useEffect(() => {
-    // console.log(selectedPage)
-  }, [selectedPage]);
+  // useEffect(() => {
+  //   // console.log(selectedPage)
+  // }, [selectedPage]);
 
   const dispatch = useDispatch();
-
-  const renderNavList = () =>
-    pages.map((page: string) => {
-      const selected = page === selectedPage ? "selected" : "";
-      return (
-        <div
-          key={page}
-          className={`nav-bar__menu-list__item ${selected}`}
-          onClick={() => setSelectedPage(page)}
-        >
-          <div className={`nav-bar__menu-list__item__bar ${selected}`} />
-          <div className={`icon ${page.toLowerCase()}-icon ${selected}`} />
-          <p className={`p2 ${selected} medium-font`}>{page}</p>
-        </div>
-      );
-    });
 
   return (
     <div className="nav-bar">
@@ -74,7 +55,7 @@ const NavBar = () => {
       </div>
       <div className="nav-bar__menu-list">
         <p className="cap medium-font">MAIN MENU</p>
-        {renderNavList()}
+        <NavList/>
       </div>
     </div>
   );
