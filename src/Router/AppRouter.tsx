@@ -1,15 +1,17 @@
 import React from "react";
-import { createBrowserHistory } from "history";
-import { Router, Switch, Route } from "react-router-dom";
+import history from "../history";
+import { Router, Switch } from "react-router-dom";
 import SignInPage from "../Pages/SignInPage/SignInPage";
 import RetailersPage from "../Pages/RetailersPage";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 const AppRouter = () => (
   <div>
-    <Router history={createBrowserHistory()}>
+    <Router history={history}>
       <Switch>
-        <Route path="/" exact component={SignInPage} />
-        <Route path="/test" component={RetailersPage} />
+        <PublicRoute path="/" exact component={SignInPage} />
+        <PrivateRoute path="/test" component={RetailersPage} />
       </Switch>
     </Router>
   </div>

@@ -1,24 +1,30 @@
 import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
-import 'normalize.css';
+import "normalize.css";
 import "react-widgets/dist/css/react-widgets.css";
-// import "./index.scss";
-import './base.scss';
+import "./base.scss";
+import Loader from "react-loaders";
 
 import configureStore from "./Store/configureStore";
 import AppRouter from "./Router/AppRouter";
 
-// import { ThemeProvider } from "@material-ui/core/styles";
-// import theme from "./Material-UI/theme";
+import { auth } from "./firebase/index";
+import { adminDetail } from "./Actions";
 
 const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    {/* <ThemeProvider theme={theme}> */}
-      <AppRouter />
-    {/* </ThemeProvider> */}
-  </Provider>,
+  <Loader type="ball-clip-rotate-multiple" active={true} />,
   document.getElementById("root")
 );
+
+auth.onAuthStateChanged(async (user) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>,
+    document.getElementById("root")
+  );
+  (await user) && store.dispatch<any>(adminDetail(user));
+});

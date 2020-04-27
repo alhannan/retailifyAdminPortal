@@ -1,4 +1,4 @@
-import { firestore } from "./index";
+import { firestore } from ".index";
 
 export const retailersCollection = firestore.collection("retailers");
 export const usersCollection = firestore.collection("users");

@@ -1,5 +1,5 @@
 import { auth, functions } from "../firebase";
-import { LOGIN, AUTH_ERROR } from "./types";
+import { LOGIN, AUTH_ERROR, LOGOUT } from "./types";
 
 export const startEmailLogin = (email: string, pass: any) => async (
   dispatch: any
@@ -22,6 +22,19 @@ export const startEmailLogin = (email: string, pass: any) => async (
       });
     }
   } catch (error) {
-    dispatch({ type: AUTH_ERROR, payload: "Invalid Email or Password"  });
+    dispatch({ type: AUTH_ERROR, payload: "Invalid Email or Password" });
   }
+};
+
+export const adminDetail = (user: any) => async (dispatch: any) => {
+  const { uid, email } = user;
+  dispatch({
+    type: LOGIN,
+    payload: { uid, email },
+  });
+};
+
+export const logout = () => async (dispatch: any) => {
+  await auth.signOut();
+  dispatch({ type: LOGOUT });
 };

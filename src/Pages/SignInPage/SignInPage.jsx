@@ -67,9 +67,9 @@ const SignIn = (props) => {
       <CssBaseline />
       <div className={classes.paper}>
         <img className="logo" src={logo} alt="retailify_logo" />
-        <Typography className={classes.subHeading} color="textPrimary">
+        <h3 className={classes.subHeading} color="textPrimary">
           Sign in with Admin Account
-        </Typography>
+        </h3>
         <form className={classes.form} onSubmit={onLogin}>
           <TextField
             variant="outlined"

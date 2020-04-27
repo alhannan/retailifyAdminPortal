@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import './NavBar.scss';
+import { useDispatch } from "react-redux";
+import { logout } from "../../Actions/authActions";
+import "./NavBar.scss";
 const NavBar = () => {
   //set and select page from redux navigation reducer like webapp
   const [selectedPage, setSelectedPage] = useState("Dashboard");
@@ -19,7 +21,9 @@ const NavBar = () => {
   //dispatch page action here
   useEffect(() => {
     // console.log(selectedPage)
-  },[selectedPage])
+  }, [selectedPage]);
+
+  const dispatch = useDispatch();
 
   const renderNavList = () =>
     pages.map((page: string) => {
@@ -45,7 +49,11 @@ const NavBar = () => {
         </div>
         <div className="nav-bar__profile__text">
           <p className="p1 medium-font">{user.full}</p>
-          <a className="primary_link" href="/">
+          <a
+            className="primary_link"
+            href="/"
+            onClick={() => dispatch(logout())}
+          >
             Sign out
           </a>
         </div>

@@ -44,6 +44,7 @@ const Pagination = ({
     }
     return options.map((page) => (
       <p
+        key={page}
         className={page === pageIndex ? "currentPageOption" : "pageOption"}
         onClick={() => gotoPage(page)}
       >
