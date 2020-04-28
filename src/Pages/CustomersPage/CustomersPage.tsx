@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { selectPage } from "../../Actions";
+import { selectPage, setLoader } from "../../Actions";
 import { CUSTOMERS } from "../../Constants/pages";
 
 const CustomersPage = () => {
   const dispatch = useDispatch();
   const loadData = useCallback(() => {
     dispatch(selectPage(CUSTOMERS));
+    setTimeout(() => dispatch(setLoader(false)) , 500)
   }, [dispatch]);
 
   useEffect(() => {

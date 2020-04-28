@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { selectPage } from "../../Actions";
+import { selectPage, setLoader } from "../../Actions";
 import { ORDERS } from "../../Constants/pages";
 
 const OrdersPage = () => {
@@ -8,6 +8,7 @@ const OrdersPage = () => {
   const dispatch = useDispatch();
   const loadData = useCallback(() => {
     dispatch(selectPage(ORDERS));
+    setTimeout(() => dispatch(setLoader(false)) , 500)
   }, [dispatch]);
 
   useEffect(() => {

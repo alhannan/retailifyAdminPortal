@@ -5,3 +5,6 @@ export const LOGOUT = "LOGOUT";
 
 //navigation
 export const SELECT_PAGE = "SELECT_PAGE";
+
+//loader
+export const SET_LOADER = "SET_LOADER";

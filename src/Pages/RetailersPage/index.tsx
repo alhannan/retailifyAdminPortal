@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { selectPage } from "../../Actions";
+import { selectPage, setLoader } from "../../Actions";
 import "./RetailersPage.scss";
 import ContentHeader from "./ContentHeader";
 import Table from "../../Components/Table";
@@ -14,6 +14,7 @@ const RetailersPage = () => {
 
   const loadData = useCallback(() => {
     dispatch(selectPage(RETAILERS));
+    setTimeout(() => dispatch(setLoader(false)) , 500)
   }, [dispatch]);
 
   useEffect(() => {

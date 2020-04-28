@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import pagesInterface from "../../Interfaces/pagesInterface";
-import { selectPage } from "../../Actions";
+import { selectPage, setLoader } from "../../Actions";
 
 const NavList = () => {
   const pages = useSelector((state: pagesInterface) => state.navigation.pages);
@@ -23,6 +23,7 @@ const NavList = () => {
             to={`/${page.toLowerCase()}`}
             onClick={() => {
               dispatch(selectPage(page));
+              dispatch(setLoader(true));
             }}
             className={`nav-bar__menu-list__item ${selected}`}
           >
