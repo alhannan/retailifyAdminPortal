@@ -21,10 +21,10 @@ const NavList = () => {
           <Link
             key={page}
             to={`/${page.toLowerCase()}`}
-            className={`nav-bar__menu-list__item ${selected}`}
             onClick={() => {
               dispatch(selectPage(page));
             }}
+            className={`nav-bar__menu-list__item ${selected}`}
           >
             <div className={`nav-bar__menu-list__item__bar ${selected}`} />
             <div className={`icon ${page.toLowerCase()}-icon ${selected}`} />

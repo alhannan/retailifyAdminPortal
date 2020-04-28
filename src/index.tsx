@@ -20,11 +20,11 @@ ReactDOM.render(
 );
 
 auth.onAuthStateChanged(async (user) => {
+  (await user) && await store.dispatch<any>(adminDetail(user));
   ReactDOM.render(
     <Provider store={store}>
       <AppRouter />
     </Provider>,
     document.getElementById("root")
   );
-  (await user) && store.dispatch<any>(adminDetail(user));
 });
