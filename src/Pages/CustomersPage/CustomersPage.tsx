@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectPage, setLoader } from "../../Actions";
 import { CUSTOMERS } from "../../Constants/pages";
 
 const CustomersPage = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(
+    (state: { isLoading: boolean }) => state.isLoading
+  );
   const loadData = useCallback(() => {
     dispatch(selectPage(CUSTOMERS));
     setTimeout(() => dispatch(setLoader(false)) , 500)
@@ -14,7 +17,7 @@ const CustomersPage = () => {
     loadData();
   }, [loadData]);
 
-  return (
+  return ( !loading &&
     <div className="content">
       <div className="wrapped-content">
         <h5>Customers Page</h5>
