@@ -13,7 +13,7 @@ export const startEmailLogin = (email: string, pass: any) => async (
       const { user } = await auth.signInWithEmailAndPassword(email, pass);
       dispatch({
         type: LOGIN,
-        payload: { uid: user?.uid, email: user?.email },
+        payload: { uid: user?.uid, email: user?.email, displayName: user?.displayName },
       });
     } else {
       dispatch({
@@ -27,10 +27,12 @@ export const startEmailLogin = (email: string, pass: any) => async (
 };
 
 export const adminDetail = (user: any) => async (dispatch: any) => {
-  const { uid, email } = user;
+  const { uid, email, displayName } = user;
+
+  console.log(user);
   dispatch({
     type: LOGIN,
-    payload: { uid, email },
+    payload: { uid, email, displayName },
   });
 };
 

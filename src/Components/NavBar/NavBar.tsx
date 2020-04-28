@@ -1,6 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Actions/authActions";
+import authState from '../../Interfaces/authState';
 import NavList from './NavList';
 import "./NavBar.scss";
 
@@ -9,27 +10,17 @@ const NavBar = () => {
   const retailerCount = 3;
   const productCount = 1400;
 
-  const user = {
-    full: "Gibran Gul",
-    first: "Gibran",
-    last: "Gul",
-  };
-
-  //dispatch page action here
-  // useEffect(() => {
-  //   // console.log(selectedPage)
-  // }, [selectedPage]);
-
+  const adminName = useSelector((state: authState) => state.auth.admin.displayName);
   const dispatch = useDispatch();
 
   return (
     <div className="nav-bar">
       <div className="nav-bar__profile">
         <div className="nav-bar__profile__avatar">
-          <h6>{user.first[0] + user.last[0]}</h6>
+          <h6>{adminName.split(' ')[0][0] + adminName.split(' ')[1][0]}</h6>
         </div>
         <div className="nav-bar__profile__text">
-          <p className="p1 medium-font">{user.full}</p>
+          <p className="p1 medium-font">{adminName}</p>
           <a
             className="primary_link"
             href="/"

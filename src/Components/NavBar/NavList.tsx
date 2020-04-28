@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import pagesInterface from "../../Interfaces/pagesInterface";
 import { selectPage } from "../../Actions";
 
@@ -17,15 +18,18 @@ const NavList = () => {
         const selected = page === selectedPage ? "selected" : "";
 
         return (
-          <div
+          <Link
             key={page}
+            to={`/${page.toLowerCase()}`}
             className={`nav-bar__menu-list__item ${selected}`}
-            onClick={() => dispatch(selectPage(page))}
+            onClick={() => {
+              dispatch(selectPage(page));
+            }}
           >
             <div className={`nav-bar__menu-list__item__bar ${selected}`} />
             <div className={`icon ${page.toLowerCase()}-icon ${selected}`} />
             <p className={`p2 ${selected} medium-font`}>{page}</p>
-          </div>
+          </Link>
         );
       })}
     </div>
