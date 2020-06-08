@@ -1,39 +1,38 @@
-import TwoLineCell from '../../Components/Table/TwoLineCell';
-import IndexCell from '../../Components/Table/IndexCell';
-import DeleteCell from '../../Components/Table/DeleteCell';
+import TwoLineCell from "../../Components/Table/TwoLineCell";
+import IndexCell from "../../Components/Table/IndexCell";
+import DeleteCell from "../../Components/Table/DeleteCell";
 
 export const retailerColumns = [
   {
     Header: "#",
-    accessor: (d:any) => d.index,
+    accessor: (d: any) => d.index,
     maxWidth: 66,
-    Cell: IndexCell
+    Cell: IndexCell,
   },
   {
     Header: "NAME",
-    accessor: (d: any) => ({ name: d.name, desc: d.location + ", " + d.city }),
-    Cell: TwoLineCell
+    accessor: (d: any) => ({
+      name: d.d.name,
+      desc: d.d.location + ", " + d.d.city,
+    }),
+    Cell: TwoLineCell,
+  },
+  {
+    Header: "RATING",
+    accessor: "d.rating",
+    width: 55,
   },
   {
     Header: "NUMBER",
-    accessor: "number",
-    width: 55
+    accessor: "d.number",
+    width: 40,
   },
   {
     Header: "EMAIL",
-    accessor: "email",
-    width: 65
+    accessor: "d.email",
+    width: 65,
   },
-  {
-    Header: "ADDED ON",
-    accessor: "addedOn",
-    width: 50
-  },
-  {
-    Header: "PRODUCTS",
-    accessor: "products.length",
-    width: 40
-  },
+
   {
     Header: "Delete",
     accessor: (d: any) => ({ id: d._id, type: "retailer" }),

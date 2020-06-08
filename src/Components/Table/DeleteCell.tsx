@@ -5,6 +5,7 @@ import {
   deleteProduct,
   deleteCategory,
   deleteRetailer,
+  fetchProducts,
 } from "../../Actions";
 
 const DeleteCell = ({ value }: any) => {
@@ -25,6 +26,7 @@ const DeleteCell = ({ value }: any) => {
             return dispatch(deleteRetailer(id));
         }
         console.log(id);
+        dispatch(fetchProducts())
       }}
       className="btn btn-danger-border"
     >

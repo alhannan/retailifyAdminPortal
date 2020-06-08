@@ -15,19 +15,19 @@ export const categoriesColumns = [
     Cell: TwoLineCell
   },
 
-  {
-    Header: "ADDED ON",
-    accessor: "addedOn",
-    maxWidth: 80
-  },
-  {
-    Header: "NUMBER OF PRODUCTS",
-    accessor: "products.length",
-    maxWidth: 80
-  },
+  // {
+  //   Header: "ADDED ON",
+  //   accessor: "addedOn",
+  //   maxWidth: 80
+  // },
+  // {
+  //   Header: "NUMBER OF PRODUCTS",
+  //   accessor: "products.length",
+  //   maxWidth: 80
+  // },
   {
     Header: "Delete",
-    accessor: (d: any) => ({ id: d._id, type: "category" }),
+    accessor: (d: any) => ({ id: d.id, type: "category" }),
     maxWidth: 50,
     Cell: DeleteCell,
   },

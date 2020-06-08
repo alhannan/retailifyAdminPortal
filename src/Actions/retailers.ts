@@ -1,14 +1,18 @@
 import axios from 'axios';
 import { FETCH_RETAILERS, DELETE_RETAILER } from './types';
+import { retailersCollection } from '../firebase/collections';
 
 export const fetchRetailers = () => async (dispatch: any) => {
   try {
 
-    const retailers = await axios.get("http://localhost:3001/retailers");
-
+    const retailersSnapshot = await retailersCollection.get();
+    const retailers: any = [];
+    retailersSnapshot.forEach((doc: any) => {
+      retailers.push({ id: doc.id, ...doc.data()})
+    })
     dispatch({
       type: FETCH_RETAILERS,
-      payload: retailers.data
+      payload: retailers
     })
 
   } catch (error) {

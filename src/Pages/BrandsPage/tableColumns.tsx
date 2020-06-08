@@ -14,11 +14,11 @@ export const brandsColumns = [
     accessor: (d: any) => ({ name: d.name, desc: d.id }),
     Cell: TwoLineCell,
   },
-  {
-    Header: "ADDED ON",
-    accessor: "addedOn",
-    maxWidth: 80,
-  },
+  // {
+  //   Header: "ADDED ON",
+  //   accessor: "addedOn",
+  //   maxWidth: 80,
+  // },
   {
     Header: "NUMBER OF PRODUCTS",
     accessor: "products.length",
@@ -26,7 +26,7 @@ export const brandsColumns = [
   },
   {
     Header: "Delete",
-    accessor: (d: any) => ({ id: d._id, type: "brand" }),
+    accessor: (d: any) => ({ id: d.id, type: "brand" }),
     maxWidth: 50,
     Cell: DeleteCell,
   },

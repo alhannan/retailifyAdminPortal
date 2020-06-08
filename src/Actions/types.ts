@@ -10,10 +10,12 @@ export const SET_LOADER = "SET_LOADER";
 
 //Products
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
-export const DELETE_PRODUCT = "DELETE_BRAND"
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 
 //CATEGORIES
+export const ADD_CATEGORY = "ADD_CATEGORY";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export const DELETE_CATEGORY = "DELETE_CATEGORY"
 
@@ -24,6 +26,7 @@ export const DELETE_RETAILER = "DELETE_RETAILER"
 
 //BRANDS
 export const FETCH_BRANDS = "FETCH_BRANDS";
+export const ADD_BRAND = "ADD_BRAND";
 export const DELETE_BRAND = "DELETE_BRAND"
 
 export const AUTH_USER = 'AUTH_USER'

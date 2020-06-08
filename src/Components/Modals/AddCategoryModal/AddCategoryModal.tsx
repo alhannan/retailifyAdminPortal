@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import ModalHeader from "../ModalHeader";
-import { RenderInput, ImageInput } from "../../Fields/index";
-import axios from 'axios';
+import { RenderInput } from "../../Fields/index";
 
 import "./AddCategoryModal.scss";
 import { SubmitButton } from "../../Fields/index";
+import { addCategory } from "../../../Actions";
+import { useDispatch } from "react-redux";
 
 Modal.setAppElement("#root");
 
@@ -13,8 +14,10 @@ const AddCategoryModal = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [categoryName, setCategoryName ] = useState("");
 
-  const handleSubmit = async () => {
-    const category = await axios.post("http://localhost:3001/categories/add", {name: categoryName})
+  const dispatch = useDispatch();
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    dispatch(addCategory({name: categoryName}))
   }
 
   function openModal() {

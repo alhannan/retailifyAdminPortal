@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import ModalHeader from "../ModalHeader";
-import { RenderInput, ImageInput } from "../../Fields/index";
+import { RenderInput } from "../../Fields/index";
 
 import "./AddBrandModal.scss";
 import { SubmitButton } from "../../Fields/index";
+import { addBrand } from "../../../Actions";
+import { useDispatch } from "react-redux";
 
 Modal.setAppElement("#root");
 
@@ -12,8 +14,16 @@ const AddBrandModal = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [brandName, setBrandName ] = useState("");
 
-  const handleSubmit = async () => {
-    // const brand = await axios.post("http://localhost:3001/brands/add", {name: brandName})
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const brand = {
+      categories: [{}],
+      products: [{}],
+      name: brandName,
+    }
+    dispatch(addBrand(brand));
   }
 
   function openModal() {
@@ -41,9 +51,9 @@ const AddBrandModal = () => {
         className="brand_modal_container"
       >
         <ModalHeader title="Add Brand" />
-        <form className="brand_modal_elements" onSubmit={handleSubmit}>
+        <form className="brand_modal_elements">
             <RenderInput type="text" name="Brand Name" onChange={(name: any) => setBrandName(name.target.value)}/>
-            <SubmitButton />
+            <SubmitButton onClick={handleSubmit}/>
         </form>
       </Modal>
     </div>

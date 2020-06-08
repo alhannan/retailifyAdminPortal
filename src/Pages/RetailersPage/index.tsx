@@ -17,9 +17,9 @@ const RetailersPage = () => {
   const retailers = useSelector((state: any) =>
     Object.values(state.retailers).filter(
       (retailer: any) =>
-        retailer.name.toLowerCase().includes(search.toLowerCase()) ||
-        retailer.city.toLowerCase().includes(search.toLowerCase()) ||
-        retailer.location.toLowerCase().includes(search.toLowerCase())
+        retailer.d.name.toLowerCase().includes(search.toLowerCase()) ||
+        retailer.d.city.toLowerCase().includes(search.toLowerCase()) ||
+        retailer.d.location.toLowerCase().includes(search.toLowerCase())
     )
   );
 

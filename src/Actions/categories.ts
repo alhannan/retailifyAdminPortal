@@ -1,14 +1,17 @@
-import axios from 'axios';
-import { FETCH_CATEGORIES, DELETE_CATEGORY } from './types';
+import { FETCH_CATEGORIES, DELETE_CATEGORY, ADD_CATEGORY } from './types';
+import { categoriesCollection } from '../firebase/collections';
 
 export const fetchCategories = () => async (dispatch: any) => {
   try {
 
-    const categories = await axios.get("http://localhost:3001/categories");
-
+    const categoriesSnapshot = await categoriesCollection.get();
+    const categories: any = [];
+    categoriesSnapshot.forEach(doc => {
+      categories.push({ id: doc.id, ...doc.data()})
+    })
     dispatch({
       type: FETCH_CATEGORIES,
-      payload: categories.data
+      payload: categories
     })
 
   } catch (error) {
@@ -16,9 +19,19 @@ export const fetchCategories = () => async (dispatch: any) => {
   }
 };
 
+export const addCategory = (categories: any) => async (
+  dispatch: any
+) => {
+  const docRef = await categoriesCollection.add({...categories});
+  dispatch({
+    type: ADD_CATEGORY,
+    payload: { id: docRef.id, ...categories },
+  });
+};
+
 export const deleteCategory = (uid: string) => async (dispatch: any) => {
   try {
-    await axios.delete(`http://localhost:3001/categories/delete/${uid}`);
+    await categoriesCollection.doc(uid).delete();
     dispatch({
       type: DELETE_CATEGORY,
       payload: uid,

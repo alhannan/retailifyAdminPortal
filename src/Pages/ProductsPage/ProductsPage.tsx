@@ -14,7 +14,7 @@ const ProductsPage = () => {
   const products = useSelector((state: any) =>
     Object.values(state.products).filter(
       (product: any) =>
-        product.title.toLowerCase().includes(search.toLowerCase()) ||
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
         product.upc.toLowerCase().includes(search.toLowerCase())
     )
   );

@@ -127,9 +127,9 @@ export const ImageInput = () => (
   </div>
 );
 
-export const SubmitButton = () => (
+export const SubmitButton = ({ onClick }: any) => (
   <div className="field_container">
-    <input type="submit" name="Submit" className="submit_btn" />
+    <input type="submit" name="Submit" className="submit_btn" onClick={onClick}/>
   </div>
 );
 

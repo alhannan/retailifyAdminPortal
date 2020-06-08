@@ -11,12 +11,12 @@ export const productsColumns = [
   },
   {
     Header: "NAME/UPC",
-    accessor: (d: any) => ({ name: d.title, desc: d.upc }),
+    accessor: (d: any) => ({ name: d.name, desc: d.upc }),
     Cell: TwoLineCell,
   },
   {
-    Header: "PRICE",
-    accessor: "price",
+    Header: "SIZE",
+    accessor: "size",
     width: 45,
   },
   {
@@ -25,23 +25,18 @@ export const productsColumns = [
     width: 55,
   },
   {
-    Header: "SIZE",
-    accessor: "size",
-    width: 50,
-  },
-  {
     Header: "CATEGORIES",
-    accessor: "category.name",
+    accessor: "categories[0].name",
     width: 50,
   },
   {
-    Header: "COUNT",
-    accessor: "count",
+    Header: "DESCRIPTION",
+    accessor: "description",
     width: 50,
   },
   {
     Header: "Delete",
-    accessor: (d: any) => ({ id: d._id, type: "product" }),
+    accessor: (d: any) => ({ id: d.id, type: "product" }),
     maxWidth: 60,
     Cell: DeleteCell,
   },

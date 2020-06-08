@@ -7,7 +7,7 @@ export default (state = {}, action: Action) => {
     case FETCH_RETAILERS:
       return {
         ...state,
-        ..._.mapKeys(action.payload, "_id"),
+        ..._.mapKeys(action.payload, "id"),
       };
     case DELETE_RETAILER:
       return _.omit(state, action.payload);
