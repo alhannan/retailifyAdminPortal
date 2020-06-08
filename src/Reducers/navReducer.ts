@@ -1,16 +1,15 @@
 import { SELECT_PAGE } from "../Actions/types";
 import { Action } from "../Interfaces/actionInterface";
 import {
-  DASHBOARD,
   RETAILERS,
-  CUSTOMERS,
-  ORDERS,
   PRODUCTS,
+  BRANDS,
+  CATEGORIES
 } from "../Constants/pages";
 
 const INITIAL_STATE = {
-  pages: [DASHBOARD, RETAILERS, CUSTOMERS, ORDERS, PRODUCTS],
-  currentPage: DASHBOARD,
+  pages: [RETAILERS, PRODUCTS, BRANDS, CATEGORIES],
+  currentPage: RETAILERS,
 };
 
 export default (state = INITIAL_STATE, action: Action) => {

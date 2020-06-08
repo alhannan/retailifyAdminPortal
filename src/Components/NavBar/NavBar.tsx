@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../Actions/authActions";
-import authState from '../../Interfaces/authState';
-import NavList from './NavList';
+import NavList from "./NavList";
 import "./NavBar.scss";
+import {
+  fetchProducts,
+  fetchCategories,
+  fetchBrands,
+  fetchRetailers,
+  setLoader,
+  logout
+} from "../../Actions";
 
 const NavBar = () => {
 
-  const retailerCount = 3;
-  const productCount = 1400;
+  const adminName = useSelector((state: any) => state.auth.admin.displayName);
 
-  const adminName = useSelector((state: authState) => state.auth.admin.displayName);
+  const retailerCount = useSelector(
+    (state: any) => Object.values(state.retailers).length
+  );
+
+  const productCount = useSelector(
+    (state: any) => Object.values(state.products).length
+  );
   const dispatch = useDispatch();
+
+  const loadData = useCallback(() => {
+    dispatch(fetchProducts());
+    dispatch(fetchCategories());
+    dispatch(fetchBrands());
+    dispatch(fetchRetailers());
+    setTimeout(() => dispatch(setLoader(false)), 500);
+  }, [dispatch]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   return (
     <div className="nav-bar">
       <div className="nav-bar__profile">
         <div className="nav-bar__profile__avatar">
-          <h6>{adminName.split(' ')[0][0] + adminName.split(' ')[1][0]}</h6>
+          <h6>{adminName.split(" ")[0][0] + adminName.split(" ")[1][0]}</h6> 
         </div>
         <div className="nav-bar__profile__text">
           <p className="p1 medium-font">{adminName}</p>
@@ -46,7 +69,7 @@ const NavBar = () => {
       </div>
       <div className="nav-bar__menu-list">
         <p className="cap medium-font">MAIN MENU</p>
-        <NavList/>
+        <NavList />
       </div>
     </div>
   );

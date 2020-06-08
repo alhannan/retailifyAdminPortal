@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Field, renderIconInput } from "../../Components/Fields";
-import AddRetailerModal from "../../Components/Modals/AddRetailerModel/AddRetailerModal";
+import AddBrandModal from "../../Components/Modals/AddBrandModal/AddBrandModal";
 
 const ContentHeader = (props: any) => {
   const [search, setSearch] = useState("");
@@ -12,9 +12,9 @@ const ContentHeader = (props: any) => {
   return (
     <div className="content__header">
       <div className="flex-row">
-        <p className="p2 primary-text medium-font">All Retailers</p>
+        <p className="p2 primary-text medium-font">All Brands</p>
         <div className="content__header__vertical-divider" />
-        <p className="p2 link-text  medium-font">{props.count} Retailers</p>
+        <p className="p2 link-text  medium-font">{props.count} Brands</p>
       </div>
       <div className="flex-row">
         <Field
@@ -22,16 +22,13 @@ const ContentHeader = (props: any) => {
           value={search}
           onChange={({ target }: any) => setSearch(target.value)}
           autoComplete="no"
-          placeholder="Search Retailers"
+          placeholder="Search Brands"
           className="icon-input"
           type="text"
           iconName="search-icon"
           label=""
         />
-        {/* <button className="btn btn-primary-border">
-          Add Retailer
-        </button> */}
-        <AddRetailerModal />
+        <AddBrandModal />
       </div>
     </div>
   );

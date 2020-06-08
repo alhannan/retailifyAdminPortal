@@ -2,7 +2,7 @@ import TwoLineCell from '../../Components/Table/TwoLineCell';
 import IndexCell from '../../Components/Table/IndexCell';
 import DeleteCell from '../../Components/Table/DeleteCell';
 
-export const retailerColumns = [
+export const categoriesColumns = [
   {
     Header: "#",
     accessor: (d:any) => d.index,
@@ -10,33 +10,24 @@ export const retailerColumns = [
     Cell: IndexCell
   },
   {
-    Header: "NAME",
-    accessor: (d: any) => ({ name: d.name, desc: d.location + ", " + d.city }),
+    Header: "NAME/UPC",
+    accessor: (d: any) => ({ name: d.name, desc: d.yid}),
     Cell: TwoLineCell
   },
-  {
-    Header: "NUMBER",
-    accessor: "number",
-    width: 55
-  },
-  {
-    Header: "EMAIL",
-    accessor: "email",
-    width: 65
-  },
+
   {
     Header: "ADDED ON",
     accessor: "addedOn",
-    width: 50
+    maxWidth: 80
   },
   {
-    Header: "PRODUCTS",
+    Header: "NUMBER OF PRODUCTS",
     accessor: "products.length",
-    width: 40
+    maxWidth: 80
   },
   {
     Header: "Delete",
-    accessor: (d: any) => ({ id: d._id, type: "retailer" }),
+    accessor: (d: any) => ({ id: d._id, type: "category" }),
     maxWidth: 50,
     Cell: DeleteCell,
   },

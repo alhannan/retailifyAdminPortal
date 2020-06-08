@@ -1,5 +1,7 @@
-export const DASHBOARD = "Dashboard";
+// export const DASHBOARD = "Dashboard";
 export const RETAILERS = "Retailers";
-export const CUSTOMERS = "Customers";
 export const PRODUCTS = "Products";
+export const BRANDS = "Brands";
+export const CATEGORIES = "Categories";
+export const CUSTOMERS = "Customers";
 export const ORDERS = "Orders";

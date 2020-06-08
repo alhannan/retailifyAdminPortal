@@ -43,10 +43,10 @@
   }
 }
 
-.customers-icon {
-  background-image: url("./Images/Icons/Users.png");
+.categories-icon {
+  background-image: url("./Images/Icons/Category.png");
   &.selected {
-    background-image: url("./Images/Icons/UsersPrimary.png");
+    background-image: url("./Images/Icons/CategoryPrimary.png");
   }
 }
 
@@ -57,10 +57,11 @@
   }
 }
 
-.orders-icon {
-  background-image: url("./Images/Icons/Delivery.png");
+//brands icon should be placed here
+.brands-icon {
+  background-image: url("./Images/Icons/Brands.png");
   &.selected {
-    background-image: url("./Images/Icons/DeliveryPrimary.png");
+    background-image: url("./Images/Icons/BrandsPrimary.png");
   }
 }
 
